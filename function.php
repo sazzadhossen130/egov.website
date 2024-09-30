@@ -5,7 +5,7 @@ include('includes/database.php');
 
 	class DB_con{
 		function __construct(){
-			$con = mysqli_connect(192.168.0.100, egovwebs_svc_check, w4bJyjDJHZhPtvX3rUuq, egovwebs_svc_check);
+			$con = mysqli_connect(localhost, root, , svc_crack);
 			$this->dbh = $con;
 			if (mysqli_connect_errno()) {
 				echo "Failed to connect to MySQL: " . mysqli_connect_error();
