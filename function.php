@@ -1,16 +1,14 @@
 <?php
 
-include('includes/database.php');
+class DB_con {
+    private $dbh;
 
-
-	class DB_con{
-		function __construct(){
-			$con = mysqli_connect(localhost, root, , svc_crack);
-			$this->dbh = $con;
-			if (mysqli_connect_errno()) {
-				echo "Failed to connect to MySQL: " . mysqli_connect_error();
-			}
-		}
+    function __construct() {
+        $this->dbh = mysqli_connect('localhost', 'root', '', 'svc_crack');
+        if (mysqli_connect_errno()) {
+            die("Failed to connect to MySQL: " . mysqli_connect_error());
+        }
+    }
 
 		// for username availblty
 		public function usernameavailblty($uname)
@@ -90,7 +88,7 @@ include('includes/database.php');
 			return $result;
 		}
 
-	// delete user id 
+		// delete user id 
 		public function delete_bks($id)
 		{
 			$result = mysqli_query($this->dbh, "DELETE FROM bkash_pay WHERE id=$id");
@@ -166,7 +164,7 @@ include('includes/database.php');
 		
 		
 		
-			// insert control
+		// insert control
 		public function in_login($in_login)
 		{
 			$result = mysqli_query($this->dbh, "UPDATE `control` SET `login` = '$in_login' WHERE `control`.`id` = 1;");
@@ -228,7 +226,7 @@ include('includes/database.php');
 			return $result;
 		}
 	
-			// GET control_value
+		// GET control_value
 		public function get_control()
 		{
 			$result = mysqli_query($this->dbh, "SELECT * FROM control WHERE id=1 LIMIT 1");
